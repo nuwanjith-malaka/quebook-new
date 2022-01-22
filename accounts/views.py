@@ -13,13 +13,13 @@ class SignUpView(CreateView):
     model = User
     form_class = UserCreationForm
     template_name = 'accounts/signup.html'
-    success_url = 'http://127.0.0.1:8000/login/'
+    success_url = 'https://quebooknew.herokuapp.com/login/'
 
 
 class LoginView(views.LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
-    next_page = 'http://127.0.0.1:8000/'
+    next_page = 'https://quebooknew.herokuapp.com/'
     form_class = AuthenticationForm
 
 
