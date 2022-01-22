@@ -43,7 +43,7 @@
             {% if request.user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'asker' request.user.id %}"
-                >{{user.username}}</a
+                >{{request.user.username}}</a
               >
             </li>
             <li class="nav-item">

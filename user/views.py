@@ -22,7 +22,7 @@ def AskerView(request, pk):
         form = AskerProfileForm(request.POST, request.FILES)
         if form.is_valid():
             asker_profile = form.save(commit=False)
-            asker_profile.user = user
+            asker_profile.user = request.user
             asker_profile.save()
         return redirect('asker', pk=pk)
     else:
@@ -35,13 +35,20 @@ def AskerView(request, pk):
             }
             return render(request, 'user/asker.html', context)
         except AskerProfile.DoesNotExist:
-            form = AskerProfileForm()
-            context = {
-                'questions': questions,
-                'form': form,
-                'user': user
+            if user == request.user:
+                form = AskerProfileForm()
+                context = {
+                    'questions': questions,
+                    'form': form,
+                    'user': user
 
-            }
+                }
+            else:
+                context = {
+                    'questions': questions,
+                    'user': user
+
+                }
             return render(request, 'user/asker.html', context)
 
 # def EditProfileView(request, pk):
