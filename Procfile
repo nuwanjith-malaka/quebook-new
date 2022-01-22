@@ -1,1 +1,1 @@
-web: gunicorn qbook.wsgi
+web: gunicorn qbooknew.wsgi
