@@ -43,7 +43,7 @@
     ><button type="submit" class="btn btn-info btn-sm">Edit Profile</button></a
   >
   <br /><br />
-  {% endif %} {% else %}
+  {% if not asker %}
   <form method="POST" action="" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mb-3">
@@ -76,6 +76,7 @@
       </button></a
     >
   </form>
+  {% endif %}
   <br /><br />
   {% endif %} {% if questions %} {% for question in questions %}
   <a href="{% url 'question_single' question.pk %}"
