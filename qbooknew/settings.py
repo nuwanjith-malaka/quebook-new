@@ -139,9 +139,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'https://quebooknew.herokuapp.com/'
+LOGIN_REDIRECT_URL = ''
 
-LOGIN_URL = 'https://quebooknew.herokuapp.com/login/'
+LOGIN_URL = 'login/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
