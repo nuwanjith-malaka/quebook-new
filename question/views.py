@@ -63,13 +63,15 @@ def QuestionSingleView(request, pk):
     form1 = AnswerForm()
     form2 = QuestionCommentForm()
     answers = question.answer_set.all()
-    for answer in answers:
-        answer.upvotes = AnswerUpVote.objects.filter(answer=answer).count()
-        answer.downvotes = AnswerDownVote.objects.filter(answer=answer).count()
-        answer.comments = AnswerComment.objects.filter(answer=answer)
+    # for answer in answers:
+    #     answer.upvotes = AnswerUpVote.objects.filter(answer=answer).count()
+    #     answer.downvotes = AnswerDownVote.objects.filter(answer=answer).count()
+    #     answer.comments = AnswerComment.objects.filter(answer=answer)
     comments = question.questioncomment_set.all()
     answers = answers.annotate(upvotes=Count(
                     'answerupvote'), downvotes=Count('answerdownvote')).order_by('-upvotes', 'downvotes')
+    for answer in answers:
+        answer.comments = AnswerComment.objects.filter(answer=answer)
     return render(request, 'question/question_single.html', {'question': question, 'answers': answers, 'form1': form1, 'form2': form2, 'comments': comments})
 
 def TagQuestionsView(request, tag):
