@@ -90,6 +90,7 @@
           </p>
           <div class="px-5">
             {% for comment in answer.comments %}
+            <hr>
               <p>{{comment.comment}}</p><p class="grey">
               Commented By <a href="{% url 'asker' comment.user.id %}">{% if comment.user.askerprofile.photo %}
                 <img src="{{comment.user.askerprofile.photo.url}}"  width="30px" height="30px" style="margin-right: 3px;">{% endif %}
@@ -98,6 +99,7 @@
                 <a href="{% url 'answer_comment_edit' comment.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Edit</button></a>
                   <a href="{% url 'answer_comment_delete' comment.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Delete</button></a></p>
               {% endif %}
+              
             {% endfor %}
             <hr>
           </div>
