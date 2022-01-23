@@ -19,11 +19,15 @@
   ul {
     list-style-type: none;
   }
+  
+  .grey {
+    color: rgb(81, 83, 85);
+  }
 </style>
 {% endblock %}
 {% block content %}
 <div class="center">
-  <p>{{question.body|safe}}</p><p>
+  <p>{{question.body|safe}}</p><p class="grey">
    <a href="{% url 'questionupvote' question.id %}"><button style="margin:5px;" type="submit" class="btn btn-success btn-sm">upvote</button></a>
    <a href="{% url 'questiondownvote' question.id %}"><button style="margin:5px;" type="submit" class="btn btn-danger btn-sm">downvote</button></a>
     
@@ -41,7 +45,7 @@
       <h4>Comments</h4>
       {% if comments %}
         {% for comment in comments %}
-          <p>{{comment.comment}}</p>
+          <p>{{comment.comment}}</p><p class="grey">
           Commented By <a href="{% url 'asker' comment.user.id %}">{% if comment.user.askerprofile.photo %}
             <img src="{{comment.user.askerprofile.photo.url}}"  width="30px" height="30px" style="margin-right: 3px;">{% endif %}
             {{ comment.user.username }}</a> on {{ comment.date }}  
@@ -50,7 +54,7 @@
               <a href="{% url 'question_comment_delete' comment.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Delete</button></a>
           {% endif %}
           </p>
-          
+          </p>
           <hr>
         {% endfor %}
       {% else %}
@@ -72,7 +76,7 @@
       <h4>Answers</h4>
       {% if answers %}
         {% for answer in answers %}
-          <p>{{answer.body}}</p>
+          <p>{{answer.body}}</p><p class="grey">
           <a href="{% url 'answerupvote' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-success btn-sm">upvote</button></a>
           <a href="{% url 'answerdownvote' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-danger btn-sm">downvote</button></a>
           <a href="{% url 'answer_comment_form' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">comment</button></a>
@@ -83,13 +87,13 @@
             <p><a href="{% url 'answer_edit' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Edit</button></a>
               <a href="{% url 'answer_delete' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Delete</button></a></p>
           {% endif %}
-          
+          </p>
           <div class="px-5">
             {% for comment in answer.comments %}
-              <p>{{comment.comment}}</p>
+              <p>{{comment.comment}}</p><p class="grey">
               Commented By <a href="{% url 'asker' comment.user.id %}">{% if comment.user.askerprofile.photo %}
                 <img src="{{comment.user.askerprofile.photo.url}}"  width="30px" height="30px" style="margin-right: 3px;">{% endif %}
-                {{ comment.user.username }}</a> on {{ comment.date }}  
+                {{ comment.user.username }}</a> on {{ comment.date }}  </p>
               {% if request.user == comment.user %}
                 <a href="{% url 'answer_comment_edit' comment.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Edit</button></a>
                   <a href="{% url 'answer_comment_delete' comment.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Delete</button></a></p>
