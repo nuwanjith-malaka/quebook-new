@@ -41,7 +41,7 @@
    <a href="{% url 'tag_questions' question.tag %}"><button type="submit" class="btn btn-warning btn-sm">{{question.tag}}</button></a>
     </p>
     
-    <div class="px-5">
+    <div>
       <h4>Comments</h4>
       {% if comments %}
         {% for comment in comments %}
@@ -88,7 +88,7 @@
               <a href="{% url 'answer_delete' answer.id %}"><button style="margin:5px;" type="submit" class="btn btn-info btn-sm">Delete</button></a></p>
           {% endif %}
           </p>
-          <div class="px-5">
+          <div >
             {% for comment in answer.comments %}
             <hr>
               <p>{{comment.comment}}</p><p class="grey">
