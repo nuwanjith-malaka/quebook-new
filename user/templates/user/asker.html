@@ -35,9 +35,10 @@
     </div>
     <div>
       <p><b>{{asker.first_name}} {{asker.last_name}}</b></p>
-      <p>school: {{asker.school}}</p>
-      <p>grade: {{asker.grade}}</p>
-      <p>city: {{asker.city}}</p>
+      <p>age: {{asker.age}}</p>
+      <p>address: {{asker.address}}</p>
+      <p>email: {{asker.user.email}}</p>
+      <p>website: {{asker.website}}</p>
     </div>
   </div>
 
@@ -62,16 +63,16 @@
       {{ form.photo }}
     </div>
     <div class="mb-3">
-      <label class="form-label">School</label>
-      {{ form.school }}
+      <label class="form-label">Age</label>
+      {{ form.age }}
     </div>
     <div class="mb-3">
-      <label class="form-label">Grade</label>
-      {{ form.grade }}
+      <label class="form-label">Address</label>
+      {{ form.address }}
     </div>
     <div class="mb-3">
-      <label class="form-label">City</label>
-      {{ form.city }}
+      <label class="form-label">Website</label>
+      {{ form.website }}
     </div>
     <a href="{% url 'asker' user.pk %}"
       ><button type="submit" class="btn btn-info btn-sm">
