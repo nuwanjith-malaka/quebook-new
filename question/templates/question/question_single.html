@@ -45,7 +45,7 @@
       <h4>Comments</h4>
       {% if comments %}
         {% for comment in comments %}
-          <p>{{comment.comment}}</p><p class="grey">
+          <p class="grey">{{comment.comment}}</p><p >
           Commented By <a href="{% url 'asker' comment.user.id %}">{% if comment.user.askerprofile.photo %}
             <img src="{{comment.user.askerprofile.photo.url}}"  width="30px" height="30px" style="margin-right: 3px;">{% endif %}
             {{ comment.user.username }}</a> on {{ comment.date }}  
@@ -91,7 +91,7 @@
           <div >
             {% for comment in answer.comments %}
             <hr>
-              <p>{{comment.comment}}</p><p class="grey">
+              <p class="grey">{{comment.comment}}</p><p >
               Commented By <a href="{% url 'asker' comment.user.id %}">{% if comment.user.askerprofile.photo %}
                 <img src="{{comment.user.askerprofile.photo.url}}"  width="30px" height="30px" style="margin-right: 3px;">{% endif %}
                 {{ comment.user.username }}</a> on {{ comment.date }}  </p>
