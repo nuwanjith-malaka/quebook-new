@@ -16,9 +16,6 @@ def AskerView(request, pk):
             question=question).count()
         question.downvotes = QuestionDownVote.objects.filter(
             question=question).count()
-    context = {
-        'questions': questions,
-    }
     if request.method == 'POST':
         form = AskerProfileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -36,7 +33,7 @@ def AskerView(request, pk):
             }
             return render(request, 'user/asker.html', context)
         except AskerProfile.DoesNotExist:
-            if user == request.user:
+            if request.user == user:
                 form = AskerProfileForm()
                 context = {
                     'questions': questions,
