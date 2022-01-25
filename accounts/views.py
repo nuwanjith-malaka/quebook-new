@@ -7,19 +7,20 @@ from django.contrib.auth import views
 from django.contrib import messages
 from django.shortcuts import redirect
 from .forms import AuthenticationForm
+from django.urls import reverse
 # Create your views here.
 
 class SignUpView(CreateView):
     model = User
     form_class = UserCreationForm
     template_name = 'accounts/signup.html'
-    success_url = 'https://quebooknew.herokuapp.com/login/'
-
+    
+    def get_success_url(self):
+        return reverse('login')
 
 class LoginView(views.LoginView):
     template_name = 'accounts/login.html'
     redirect_authenticated_user = True
-    next_page = 'https://quebooknew.herokuapp.com/'
     form_class = AuthenticationForm
 
 
