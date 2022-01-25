@@ -23,6 +23,8 @@ class LoginView(views.LoginView):
     redirect_authenticated_user = True
     form_class = AuthenticationForm
 
+    def get_success_url(self):
+        return reverse('home')
 
 class LogoutView(views.LogoutView):
     template_name = 'accounts/logged_out.html'
