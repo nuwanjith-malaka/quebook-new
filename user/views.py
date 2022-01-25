@@ -5,7 +5,8 @@ from question.models import Question
 from .models import AskerProfile
 from django.contrib.auth.models import User
 from .forms import AskerProfileForm
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
+from django.http.response import HttpResponseRedirect
 # Create your views here.
 def AskerView(request, pk):
     user = User.objects.get(id=pk)
@@ -75,3 +76,29 @@ class EditProfileView(UpdateView):
         context['asker'] = self.get_object()
         context['user'] = self.get_object().user
         return context
+
+
+# def DeleteProfileView(request, pk):
+#     user = AskerProfile.objects.get(pk=pk).user
+#     if request.method == 'POST':
+#         user.delete()
+#         return redirect('home')
+#     return render(request, 'user/delete_profile.html', {'user': user})
+
+
+class DeleteProfileView(DeleteView):
+    model = AskerProfile
+    template_name = 'user/delete_profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = self.get_object()
+        return context
+
+    def get_success_url(self):
+        return reverse('home')
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.user.delete()
+        return HttpResponseRedirect(success_url)
