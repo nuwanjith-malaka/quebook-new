@@ -42,10 +42,10 @@
   </div>
 
   {% if request.user == asker.user %}
-  <a href="{% url 'edit_profile' asker.user.id %}"
+  <a href="{% url 'edit_profile' asker.id %}"
     ><button type="submit" class="btn btn-info btn-sm">Edit Profile</button></a
   >
-  <a href="{% url 'delete_profile' asker.user.id %}"
+  <a href="{% url 'delete_profile' asker.id %}"
     ><button type="submit" class="btn btn-info btn-sm">
       Delete Profile
     </button></a
