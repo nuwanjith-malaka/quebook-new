@@ -7,9 +7,7 @@ class AskerProfile(models.Model):
     first_name = models.CharField(max_length=20, null=True, blank=True)
     last_name = models.CharField(max_length=20, null=True, blank=True)
     photo = models.ImageField(null=True, blank=True)
-    age = models.IntegerField(null=True, blank=True)
-    address = models.TextField(null=True, blank=True)
-    website = models.URLField(null=True, blank=True)
+    
 
     def get_absolute_url(self):
         return reverse('asker', kwargs={'pk': self.user.pk})
