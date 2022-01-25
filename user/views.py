@@ -73,7 +73,6 @@ class EditProfileView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
-        context['asker'] = self.get_object()
         context['user'] = self.get_object().user
         return context
 
@@ -92,7 +91,7 @@ class DeleteProfileView(DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user'] = self.get_object()
+        context['asker'] = self.get_object()
         return context
 
     def get_success_url(self):
