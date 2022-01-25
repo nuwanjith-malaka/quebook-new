@@ -71,6 +71,7 @@ class EditProfileView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
         context['user'] = self.get_object().user
+        context['asker'] = self.get_object()
         return context
 
 
