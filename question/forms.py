@@ -7,7 +7,7 @@ class QuestionForm(forms.ModelForm):
         model = Question
         fields = ['heading', 'body', 'tag']
         widgets = {
-            'heading':forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Type A Heading' }),
+            'heading':forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Type A Heading' }),
             'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Type Your Question' }),
             'tag':forms.Select(attrs={'class': 'form-control', 'placeholder': 'Tag' })
         }
