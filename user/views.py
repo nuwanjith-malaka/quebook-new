@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from votes.models import QuestionDownVote, QuestionUpVote
 from question.models import Question
-from .models import AskerProfile
+from .models import AskerProfile, FriendShip
 from django.contrib.auth.models import User
 from .forms import AskerProfileForm
 from django.views.generic.edit import UpdateView, DeleteView
@@ -98,3 +98,9 @@ class DeleteProfileView(DeleteView):
         success_url = self.get_success_url()
         self.object.user.delete()
         return HttpResponseRedirect(success_url)
+
+
+# def UserFollowView(request, pk):
+#     asker = User.objects.get(pk=pk)
+#     FriendShip.objects.create(to_user=asker, from_user=request.user)
+#     return redirect('asker', pk=pk)

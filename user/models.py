@@ -17,3 +17,8 @@ class AskerProfile(models.Model):
 
     def get_absolute_url(self):
         return reverse('asker', kwargs={'pk': self.user.pk})
+
+class FriendShip(models.Model):
+    from_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers')
+    to_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followings')
+    date = models.DateTimeField(auto_now_add=True)

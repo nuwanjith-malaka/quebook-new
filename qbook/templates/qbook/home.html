@@ -40,7 +40,10 @@
   <div class="pt-2"></div>
   {% if questions %} {% for question in questions %}
   <a href="{% url 'question_single' question.pk %}">
-    <h5>{{question.heading}}</h5>
+    {% if question.heading %}
+    <h3>{{question.heading}}</h3>
+    <br />
+    {% endif %}
     <h6>{{question.body|truncatechars:500}}</h6>
   </a>
   <p>
