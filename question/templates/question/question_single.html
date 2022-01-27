@@ -27,6 +27,8 @@
 {% endblock %}
 {% block content %}
 <div class="center">
+  <h3>{{question.heading}}</h3>
+  <br>
   <p>{{question.body|safe}}</p><p class="grey">
    <a href="{% url 'questionupvote' question.id %}"><button style="margin:5px;" type="submit" class="btn btn-success btn-sm">upvote</button></a>
    <a href="{% url 'questiondownvote' question.id %}"><button style="margin:5px;" type="submit" class="btn btn-danger btn-sm">downvote</button></a>

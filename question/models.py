@@ -24,6 +24,7 @@ TAG = [
 ]
 
 class Question(models.Model):
+    heading = models.CharField(default='test heading', max_length=100, null=True, blank=True)
     tag = models.CharField(
         max_length=15,
         choices=TAG,
