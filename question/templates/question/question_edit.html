@@ -21,6 +21,10 @@
   <form method="POST" action="">
     {% csrf_token %}
     <div class="mb-3">
+      <label class="form-label">Heading</label>
+      {{ form.heading }}
+    </div>
+    <div class="mb-3">
       <label class="form-label">Question</label>
       {{ form.body }}
     </div>
