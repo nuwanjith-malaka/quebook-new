@@ -42,9 +42,15 @@
           <ul class="d-flex">
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'asker' request.user.id %}"
-                >{{request.user.username}}</a
-              >
+              <a class="nav-link" href="{% url 'asker' request.user.id %}">
+                {% if request.user.askerprofile.photo %}
+                <img
+                  src="{{request.user.askerprofile.photo.url}}"
+                  width="30px"
+                  height="30px"
+                  style="margin-right: 3px"
+                />{% endif %}{{request.user.username}}
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Sign Out</a>
